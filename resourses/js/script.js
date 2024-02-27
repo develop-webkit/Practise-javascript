@@ -1,5 +1,34 @@
 "use strict";
 
+function asyncFunc1(){
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            console.log("Some Data 1");
+            resolve("Yes!")
+        },3000);
+    });
+}
+
+function asyncFunc2(){
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            console.log("Some Data 2");
+            resolve("Yes!")
+        },3000);
+    });
+}
+
+
+const p1 = asyncFunc1();
+
+console.log("fecthing data 1")
+p1.then((res) => {
+    console.log("Promise was resolved for P1:",res);
+    const p2 = asyncFunc2();
+    p2.then((res) =>{
+        console.log("Promise was resolved for P2:",res);
+    })
+});
 
 // const getPromise = () => {
 //     return new Promise((resolve, reject) => {
